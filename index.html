@@ -1,194 +1,1016 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Shared Notepad</title>
+    <title>Alexandra, vrei să fii Valentina mea? ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292e;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-            border: 1px solid #e1e4e8;
-        }
-        h1 {
-            color: #0366d6;
-            text-align: center;
-            margin-top: 0;
-        }
-        #notepad {
-            width: 100%;
-            height: 400px;
-            padding: 12px;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            font-size: 14px;
-            line-height: 1.5;
-            resize: vertical;
+            padding: 0;
             box-sizing: border-box;
         }
-        .controls {
-            margin-top: 15px;
+        
+        body {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Bujori animați */
+        .cherry-blossom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .petal {
+            position: absolute;
+            background: #ffb7c5;
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        
+        .petal:nth-child(5n) {
+            background: #ff9eb5;
+        }
+        
+        .petal:nth-child(3n) {
+            background: #ffccd5;
+            border-radius: 50% 50% 0 50%;
+        }
+        
+        .petal:nth-child(2n) {
+            animation-delay: 1s;
+            animation-duration: 8s;
+        }
+        
+        .petal:nth-child(7n) {
+            animation-delay: 2s;
+            animation-duration: 7s;
+        }
+        
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                top: 100%;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Container principal */
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 
+                0 10px 30px rgba(255, 182, 193, 0.2),
+                0 1px 8px rgba(0, 0, 0, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b8b;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        /* Divider cu inimioară */
+        .heart-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        .heart-divider:before,
+        .heart-divider:after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ffc2cd);
+        }
+        
+        .heart-divider:after {
+            background: linear-gradient(90deg, #ffc2cd, transparent);
+        }
+        
+        .heart-divider i {
+            color: #ff6b8b;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Mesaj */
+        .message {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            padding: 0 10px;
+            font-weight: 300;
+        }
+        
+        /* Butoane */
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.08),
+                0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            min-width: 160px;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b8b, #ff8fa3);
+            color: white;
+            border: 2px solid #ff6b8b;
+        }
+        
+        .btn-yes:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 12px 20px rgba(255, 107, 139, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, #ff5777, #ff7a95);
+        }
+        
+        .btn-no {
+            background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+            color: #777;
+            border: 2px solid #ddd;
+            position: relative;
+            transition: opacity 0.5s ease;
+        }
+        
+        .btn-no:hover {
+            background: linear-gradient(135deg, #d0d0d0, #e8e8e8);
+            color: #666;
+        }
+        
+        .btn-gamble {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: 2px solid #8e44ad;
+            margin-top: 20px;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+        }
+        
+        .btn-gamble:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 12px 20px rgba(155, 89, 182, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, #8e44ad, #7d3c98);
+        }
+        
+        /* Mesaj de răspuns */
+        .response {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.9), rgba(255, 232, 236, 0.9));
+            border-radius: 20px;
+            border-left: 5px solid #ff6b8b;
+            animation: fadeInUp 1s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .response h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b8b;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .response p {
+            color: #777;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        /* Animație de celebrare */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b8b;
+            opacity: 0;
+            animation: confettiFall 3s linear forwards;
+        }
+        
+        .confetti:nth-child(5n) {
+            background-color: #ffccd5;
+        }
+        
+        .confetti:nth-child(3n) {
+            background-color: #ff9eb5;
+        }
+        
+        .confetti:nth-child(7n) {
+            background-color: #ffb7c5;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Container pentru jocul Plinko */
+        .plinko-container {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 
+                0 10px 30px rgba(255, 182, 193, 0.2),
+                0 1px 8px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            z-index: 10;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .plinko-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
         }
-        button {
-            padding: 6px 12px;
-            background-color: #2ea44f;
+        
+        .balance {
+            font-size: 1.5rem;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .balance i {
+            margin-right: 10px;
+        }
+        
+        #plinkoCanvas {
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .plinko-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .plinko-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            border: 1px solid rgba(27, 31, 35, 0.15);
-            border-radius: 6px;
-            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
             cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
         }
-        button:hover {
-            background-color: #2c974b;
+        
+        .plinko-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
         }
-        #status {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 6px;
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            font-size: 14px;
+        
+        .plinko-btn-back {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
         }
-        .loading { color: #0366d6; }
-        .success { color: #2ea44f; }
-        .error { color: #cb2431; }
+        
+        .plinko-btn-back:hover {
+            box-shadow: 0 8px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .plinko-result {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 30px;
+            color: #ff6b8b;
+        }
+        
+        /* Sloturi pentru banuți */
+        .slots {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        
+        .slot {
+            width: 80px;
+            height: 60px;
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid #d68910;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            color: rgba(255, 107, 139, 0.7);
+            text-align: center;
+            font-size: 0.9rem;
+            z-index: 10;
+            font-weight: 300;
+        }
+        
+        /* Overlay de filtru */
+        .filter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 245, 247, 0.5) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Pentru butonul No care dispare în trepte */
+        .fade-out {
+            animation: fadeOutSteps 2.5s forwards;
+        }
+        
+        @keyframes fadeOutSteps {
+            0% { opacity: 1; }
+            20% { opacity: 0.8; }
+            40% { opacity: 0.6; }
+            60% { opacity: 0.4; }
+            80% { opacity: 0.2; }
+            100% { opacity: 0; display: none; }
+        }
+        
+        /* Responsiv */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .container {
+                padding: 40px 25px;
+            }
+            
+            .btn {
+                padding: 16px 35px;
+                font-size: 1.2rem;
+                min-width: 140px;
+            }
+            
+            .options {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            #plinkoCanvas {
+                width: 100%;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                min-width: 130px;
+            }
+            
+            .plinko-container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>GitHub Shared Notepad</h1>
-        <p>All users see the same content in real-time (updates every 10 seconds)</p>
-        
-        <textarea id="notepad" placeholder="Start typing..."></textarea>
-        
-        <div class="controls">
-            <button id="saveBtn">Save Now</button>
-            <button id="downloadBtn">Download</button>
+    <!-- Bujori animați -->
+    <div class="cherry-blossom" id="cherryBlossom"></div>
+    
+    <!-- Overlay de filtru -->
+    <div class="filter-overlay"></div>
+    
+    <!-- Container principal -->
+    <div class="container" id="mainContainer">
+        <div class="header">
+            <h1>Alexandra, vrei să fii valentina mea?</h1>
+            <div class="subtitle">O întrebare specială doar pentru tine</div>
         </div>
         
-        <div id="status">Connecting to GitHub...</div>
+        <div class="heart-divider">
+            <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="message">
+            Fiecare moment petrecut cu tine este ca o poveste frumoasă și abia aștept să scriem următorul capitol împreună. Aduci atâta bucurie și lumină în viața mea și aș fi onorat dacă ai fi Valentinul meu.
+        </div>
+        
+        <div class="heart-divider">
+            <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="options">
+            <button class="btn btn-yes" id="yesBtn">
+                <i class="fas fa-heart"></i> Da, Sigur!
+            </button>
+            <button class="btn btn-no" id="noBtn">
+                <i class="far fa-frown"></i> Nu, Îmi pare rău
+            </button>
+        </div>
+        
+        <!-- Buton de gambling -->
+        <button class="btn btn-gamble" id="gambleBtn">
+            <i class="fas fa-dice"></i> Gambling time 🤑🤑🤑
+        </button>
+        
+        <div class="response" id="response">
+            <h2>Yay! Îți mulțumesc!! <i class="fas fa-heart"></i></h2>
+            <p>Tocmai mi-ai făcut toată ziua mai frumoasă! Abia aștept să sărbătorim această zi specială împreună și să creăm amintiri frumoase care vor rezista pentru totdeauna. Mulțumesc că ai spus da!</p>
+            <div class="heart-divider" style="margin: 20px 0;">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p>Pregătește-te pentru cea mai frumoasă zi a Îndrăgostiților din viața ta! <i class="fas fa-star"></i></p>
+        </div>
     </div>
+    
+    <!-- Container pentru jocul Plinko -->
+    <div class="plinko-container" id="plinkoContainer">
+        <div class="plinko-header">
+            <h2 style="color: #9b59b6; font-family: 'Dancing Script', cursive; font-size: 2.5rem;">
+                <i class="fas fa-dice"></i> Jocul Plinko
+            </h2>
+            <div class="balance">
+                <i class="fas fa-coins"></i>
+                <span id="balanceAmount">100</span> bănuți
+            </div>
+        </div>
+        
+        <p style="color: #666; margin-bottom: 20px;">Aruncă mingea și vezi în ce slot cade pentru a câștiga bănuți!</p>
+        
+        <!-- Sloturi pentru bănuți -->
+        <div class="slots">
+            <div class="slot">x2</div>
+            <div class="slot">x3</div>
+            <div class="slot">x5</div>
+            <div class="slot">x10</div>
+            <div class="slot">x2</div>
+        </div>
+        
+        <!-- Canvas pentru Plinko -->
+        <canvas id="plinkoCanvas" width="760" height="500"></canvas>
+        
+        <!-- Rezultat -->
+        <div class="plinko-result" id="plinkoResult"></div>
+        
+        <!-- Controale Plinko -->
+        <div class="plinko-controls">
+            <button class="plinko-btn" id="dropBallBtn">
+                <i class="fas fa-basketball-ball"></i> Aruncă Mingea (10 bănuți)
+            </button>
+            <button class="plinko-btn plinko-btn-back" id="backToMainBtn">
+                <i class="fas fa-arrow-left"></i> Înapoi la Întrebare
+            </button>
+        </div>
+    </div>
+    
+    <!-- Animație de celebrare -->
+    <div class="celebration" id="celebration"></div>
+    
+    <footer>
+        Făcut cu <i class="fas fa-heart" style="color: #ff6b8b;"></i> pentru melania mea moinesteanca!!
+    </footer>
 
     <script>
-        // Configuration - YOU MUST SET THESE VALUES
-        const GIST_ID = 'YOUR_GIST_ID_HERE'; // Replace with your gist ID
-        const GIST_FILENAME = 'shared-notepad.txt'; // Must match your gist filename
-        const GITHUB_TOKEN = 'YOUR_PERSONAL_ACCESS_TOKEN_HERE'; // Replace with your token
+        // Elemente DOM
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const gambleBtn = document.getElementById('gambleBtn');
+        const response = document.getElementById('response');
+        const celebration = document.getElementById('celebration');
+        const cherryBlossom = document.getElementById('cherryBlossom');
+        const mainContainer = document.getElementById('mainContainer');
+        const plinkoContainer = document.getElementById('plinkoContainer');
+        const backToMainBtn = document.getElementById('backToMainBtn');
+        const dropBallBtn = document.getElementById('dropBallBtn');
+        const balanceAmount = document.getElementById('balanceAmount');
+        const plinkoResult = document.getElementById('plinkoResult');
         
-        // DOM elements
-        const notepad = document.getElementById('notepad');
-        const saveBtn = document.getElementById('saveBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const status = document.getElementById('status');
+        // Variabile pentru jocul Plinko
+        let balance = 100;
+        let canvas, ctx;
+        let ball = {x: 380, y: 50, radius: 10, vx: 0, vy: 0, active: false};
+        let pins = [];
+        let slots = [2, 3, 5, 10, 2];
+        let gameActive = false;
         
-        // Update status message
-        function setStatus(message, type = '') {
-            status.textContent = message;
-            status.className = type;
+        // Inițializare Plinko
+        function initPlinko() {
+            canvas = document.getElementById('plinkoCanvas');
+            ctx = canvas.getContext('2d');
+            
+            // Crează pin-uri
+            createPins();
+            
+            // Desenează tabla inițială
+        wPlinko();
+            
+            // Rulează bucla de animație
+            requestAnimationFrame(updatePlinko);
         }
         
-        // Load content from GitHub Gist
-        async function loadContent() {
-            setStatus('Loading content from GitHub...', 'loading');
+        // Creează pin-urile pentru Plinko
+        function createPins() {
+            pins = [];
+            const rows = 10;
+            const cols = 9;
+            const pinSpacingX = canvas.width / (cols + 1);
+            const pinSpacingY = canvas.height / (rows + 3);
             
-            try {
-                const response = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Authorization': `token ${GITHUB_TOKEN}`
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    // Stilul de pin alternativ pentru fiecare rând
+                    if (row % 2 === 0) {
+                        pins.push({
+                            x: (col + 1.5) * pinSpacingX,
+                            y: (row + 2) * pinSpacingY,
+                            radius: 8
+                        });
+                    } else {
+                        pins.push({
+                            x: (col + 1) * pinSpacingX,
+                            y: (row + 2) * pinSpacingY,
+                            radius: 8
+                        });
+                    }
+                }
+            }
+        }
+        
+        // Desenează tabla Plinko
+        function drawPlinko() {
+            // Fundal
+            ctx.fillStyle = '#f9f9f9';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Desenează slot-urile
+            const slotWidth = canvas.width / 5;
+            for (let i = 0; i < 5; i++) {
+                ctx.fillStyle = i % 2 === 0 ? '#f1c40f' : '#f39c12';
+                ctx.fillRect(i * slotWidth, canvas.height - 60, slotWidth, 60);
+                
+                // Text pentru multiplicator
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(`x${slots[i]}`, i * slotWidth + slotWidth/2, canvas.height - 20);
+            }
+            
+            // Desenează pin-urile
+            ctx.fillStyle = '#3498db';
+            pins.forEach(pin => {
+                ctx.beginPath();
+                ctx.arc(pin.x, pin.y, pin.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Umbră pentru pin-uri
+                ctx.fillStyle = '#2980b9';
+                ctx.beginPath();
+                ctx.arc(pin.x - 2, pin.y - 2, pin.radius - 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#3498db';
+            });
+            
+            // Desenează mingea dacă este activă
+            if (ball.active) {
+                ctx.fillStyle = '#e74c3c';
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Umbră pentru minge
+                ctx.fillStyle = '#c0392b';
+                ctx.beginPath();
+                ctx.arc(ball.x - 2, ball.y - 2, ball.radius - 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Actualizează poziția mingii
+        function updatePlinko() {
+            if (ball.active) {
+                // Aplică gravitație
+                ball.vy += 0.2;
+                
+                // Actualizează poziția
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+                
+                // Verifică coliziuni cu pereți
+                if (ball.x - ball.radius < 0) {
+                    ball.x = ball.radius;
+                    ball.vx = Math.abs(ball.vx) * 0.8;
+                }
+                if (ball.x + ball.radius > canvas.width) {
+                    ball.x = canvas.width - ball.radius;
+                    ball.vx = -Math.abs(ball.vx) * 0.8;
+                }
+                
+                // Verifică coliziuni cu pin-uri
+                pins.forEach(pin => {
+                    const dx = ball.x - pin.x;
+                    const dy = ball.y - pin.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < ball.radius + pin.radius) {
+                        // Coliziune detectată
+                        const angle = Math.atan2(dy, dx);
+                        const targetX = pin.x + Math.cos(angle) * (ball.radius + pin.radius);
+                        const targetY = pin.y + Math.sin(angle) * (ball.radius + pin.radius);
+                        
+                        ball.x = targetX;
+                        ball.y = targetY;
+                        
+                        // Calculează reflexie
+                        const normal = {x: dx / distance, y: dy / distance};
+                        const dot = ball.vx * normal.x + ball.vy * normal.y;
+                        
+                        ball.vx = 0.9 * (ball.vx - 2 * dot * normal.x);
+                        ball.vy = 0.9 * (ball.vy - 2 * dot * normal.y);
+                        
+                        // Adaugă un pic de aleatoriu
+                        ball.vx += (Math.random() - 0.5) * 2;
                     }
                 });
                 
-                if (!response.ok) throw new Error('Failed to load gist');
+                // Verifică dacă mingea a ajuns la slot-uri
+                if (ball.y + ball.radius > canvas.height - 60) {
+                    ball.active = false;
+                    gameActive = false;
+                    
+                    // Determină slot-ul în care a căzut
+                    const slotWidth = canvas.width / 5;
+                    const slotIndex = Math.floor(ball.x / slotWidth);
+                    const multiplier = slots[slotIndex];
+                    
+                    // Calculează câștigul
+                    const winAmount = 10 * multiplier;
+                    balance += winAmount;
+                    balanceAmount.textContent = balance;
+                    
+                    // Afișează rezultatul
+                    plinkoResult.textContent = `🎉 Ai câștigat ${winAmount} bănuți! (x${multiplier})`;
+                    plinkoResult.style.color = '#2ecc71';
+                    
+                    // Activează din nou butonul de aruncare
+                    dropBallBtn.disabled = false;
+                    dropBallBtn.innerHTML = `<i class="fas fa-basketball-ball"></i> Aruncă Mingea (10 bănuți)`;
+                    
+                    return;
+                }
                 
-                const gist = await response.json();
-                const content = gist.files[GIST_FILENAME].content;
-                
-                notepad.value = content || '';
-                setStatus('Content loaded successfully', 'success');
-                
-                // Schedule next refresh
-                setTimeout(loadContent, 10000);
-            } catch (error) {
-                setStatus(`Error: ${error.message}`, 'error');
-                setTimeout(loadContent, 5000); // Retry after 5 seconds
+                // Verifică dacă mingea a căzut complet
+                if (ball.y > canvas.height + 50) {
+                    ball.active = false;
+                    gameActive = false;
+                    
+                    // Activează din nou butonul de aruncare
+                    dropBallBtn.disabled = false;
+                    dropBallBtn.innerHTML = `<i class="fas fa-basketball-ball"></i> Aruncă Mingea (10 bănuți)`;
+                }
             }
-        }
-        
-        // Save content to GitHub Gist
-        async function saveContent() {
-            const content = notepad.value;
-            setStatus('Saving to GitHub...', 'loading');
             
-            try {
-                const response = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Authorization': `token ${GITHUB_TOKEN}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        files: {
-                            [GIST_FILENAME]: {
-                                content: content
-                            }
-                        }
-                    })
-                });
+            // Redesenează tabla
+            drawPlinko();
+            
+            // Continuă bucla de animație
+            requestAnimationFrame(updatePlinko);
+        }
+        
+        // Aruncă mingea în jocul Plinko
+        function dropBall() {
+            if (gameActive || balance < 10) return;
+            
+            // Scade costul jocului
+            balance -= 10;
+            balanceAmount.textContent = balance;
+            
+            // Resetează mingea
+            ball.x = 380;
+            ball.y = 50;
+            ball.vx = (Math.random() - 0.5) * 4;
+            ball.vy = 0;
+            ball.active = true;
+            gameActive = true;
+            
+            // Dezactivează butonul de aruncare
+            dropBallBtn.disabled = true;
+            dropBallBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Mingea este în mișcare...`;
+            
+            // Resetează rezultatul anterior
+            plinkoResult.textContent = '';
+        }
+        
+        // Creează bujori animați
+        function createCherryBlossoms() {
+            const petalCount = 25;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
                 
-                if (!response.ok) throw new Error('Failed to save gist');
+                // Mărime aleatorie
+                const size = Math.random() * 15 + 10;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
                 
-                setStatus('Saved successfully', 'success');
-            } catch (error) {
-                setStatus(`Error: ${error.message}`, 'error');
+                // Poziție aleatorie
+                petal.style.left = `${Math.random() * 100}%`;
+                
+                // Animație aleatorie
+                const duration = Math.random() * 5 + 5;
+                petal.style.animationDuration = `${duration}s`;
+                
+                // Opacitate aleatorie
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                cherryBlossom.appendChild(petal);
             }
         }
         
-        // Download content as file
-        function downloadContent() {
-            const content = notepad.value;
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'shared-notes.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+        // Inițializează bujori
+        createCherryBlossoms();
         
-        // Auto-save when typing (with debounce)
-        let saveTimeout;
-        notepad.addEventListener('input', () => {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(saveContent, 2000);
-            setStatus('Unsaved changes - autosave in 2 seconds', 'loading');
+        // Butonul Da
+        yesBtn.addEventListener('click', function() {
+            // Arată mesajul de răspuns
+            response.style.display = 'block';
+            
+            // Ascunde butoanele
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            gambleBtn.style.display = 'none';
+            
+            // Pornește celebrarea
+            startCelebration();
+            
+            // Animație pentru container
+            mainContainer.style.transform = 'scale(1.03)';
+            setTimeout(() => {
+                mainContainer.style.transform = 'scale(1)';
+            }, 300);
         });
         
-        // Manual save button
-        saveBtn.addEventListener('click', saveContent);
+        // Butonul Nu - dispare în 5 trepte
+        noBtn.addEventListener('click', function() {
+            // Adaugă clasa pentru a dispărea în trepte
+            noBtn.classList.add('fade-out');
+            
+            // După ce dispare complet, schimbă textul butonului Da
+            setTimeout(() => {
+                noBtn.style.display = 'none';
+                yesBtn.innerHTML = `<i class="fas fa-heart"></i> Te rog, spune Da!`;
+                yesBtn.style.transform = 'scale(1.1)';
+            }, 2500);
+        });
         
-        // Download button
-        downloadBtn.addEventListener('click', downloadContent);
+        // Butonul de gambling
+        gambleBtn.addEventListener('click', function() {
+            // Ascunde containerul principal
+            mainContainer.style.display = 'none';
+            
+            // Arată containerul Plinko
+            plinkoContainer.style.display = 'block';
+            
+            // Inițializează jocul Plinko dacă nu a fost făcut deja
+            if (!canvas) {
+                initPlinko();
+            }
+        });
         
-        // Initial load
-        loadContent();
+        // Butonul de întoarcere la întrebare
+        backToMainBtn.addEventListener('click', function() {
+            // Ascunde containerul Plinko
+            plinkoContainer.style.display = 'none';
+            
+            // Arată containerul principal
+            mainContainer.style.display = 'block';
+        });
+        
+        // Butonul de aruncare a mingii
+        dropBallBtn.addEventListener('click', function() {
+            dropBall();
+        });
+        
+        // Funcția pentru celebrare
+        function startCelebration() {
+            celebration.style.display = 'block';
+            
+            // Creează confetti
+            for (let i = 0; i < 150; i++) {
+                createConfetti();
+            }
+            
+            // Continuă să creezi confetti pentru o perioadă
+            const confettiInterval = setInterval(createConfetti, 50);
+            
+            // Oprește după 3 secunde
+            setTimeout(() => {
+                clearInterval(confettiInterval);
+            }, 3000);
+        }
+        
+        // Funcția pentru crearea confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Poziție aleatorie
+            confetti.style.left = `${Math.random() * 100}%`;
+            
+            // Mărime aleatorie
+            const size = Math.random() * 10 + 5;
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            
+            // Formă aleatorie
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+            } else {
+                confetti.style.borderRadius = '0';
+            }
+            
+            // Animație aleatorie
+            const duration = Math.random() * 2 + 2;
+            confetti.style.animationDuration = `${duration}s`;
+            
+            celebration.appendChild(confetti);
+            
+            // Elimină confetti după animație
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+        
+        // Scurtături tastatură
+        document.addEventListener('keydown', function(event) {
+            // Tasta D (Da) apasă butonul Da
+            if (event.key === 'd' || event.key === 'D') {
+                yesBtn.click();
+            }
+            
+            // Tasta N (Nu) apasă butonul Nu
+            if (event.key === 'n' || event.key === 'N') {
+                noBtn.click();
+            }
+            
+            // Tasta J (Joc) duce la jocul Plinko
+            if (event.key === 'j' || event.key === 'J') {
+                gambleBtn.click();
+            }
+            
+            // Tasta ESC întoarce la întrebare
+            if (event.key === 'Escape') {
+                backToMainBtn.click();
+            }
+            
+            // Tasta Spațiu aruncă mingea în Plinko
+            if (event.key === ' ' && plinkoContainer.style.display === 'block') {
+                dropBall();
+            }
+        });
     </script>
 </body>
 </html>
